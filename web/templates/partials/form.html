@@ -1,0 +1,12 @@
+<form method="post">
+  {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1"
+      ><h4>Paste your text here</h4></label
+    >
+    <textarea class="form-control" rows="3" name="textarea"></textarea>
+  </div>
+  <a href="{% url 'index'%}" method="post">
+    <button type="submit" class="btn btn-secondary mb-2">Confirm</button>
+  </a>
+</form>
