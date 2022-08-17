@@ -1,7 +1,16 @@
 #DJANGO-EC2-AWS
+[Spanish version](README_ES.md)
 
 Simple web application made with Django. It has been deployed with
 [Amazon EC2](https://aws.amazon.com/es/ec2/?trk=58ace84c-cd27-448f-9f64-ec1187db737b&sc_channel=ps&s_kwcid=AL!4422!3!590500029721!p!!g!!aws%20ec2&ef_id=Cj0KCQjwgO2XBhCaARIsANrW2X07HTO6sZZmFMW5FhTWw29Vto-K4AedH1y96tyUw3d6r0qtAbLrLmkaAtciEALw_wcB:G:s&s_kwcid=AL!4422!3!590500029721!p!!g!!aws%20ec2) service.
+
+**Index**
+1. [Modifications in the project](#1)
+2. [EC2 Virtual Machine](#2)
+3. [Installing the application in the virtual machine](#3)
+4. [Deployment Server Configuration](#4)
+5. [Supervisor Settings](#5)
+6. [Launch the application](#6)
 
 ---
 
@@ -20,6 +29,8 @@ ALLOWED_HOSTS = ['*']
 
 > The server is instantiated with the command `python manage.py runserver`
 
+---
+
 ### EC2 virtual machine {#2}
 
 It runs with the **Ubuntu Server 22.04 LTS** OS image. Instance type: t2.micro.
@@ -28,6 +39,8 @@ In network configuration the firewall rules are:
 - Port 8000 is open for access to the deployment server.
 - HTTP, HTTPS and All traffic is enabled for all sources.
 - The rest of the configuration was left by default.
+
+---
 
 ### Installation of the application in the virtual machine {#3}
 
@@ -69,6 +82,8 @@ env = environment.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 ```
 
+---
+
 ### Deployment server configuration {#4}
 
 ```bash
@@ -77,7 +92,9 @@ sudo ln -s /etc/nginx/sites-available/django-ec2-aws /etc/nginx/sites-enabled/dj
 sudo service nginx restart
 ```
 
-### Monitor configuration {#5}
+---
+
+### Supervisor configuration {#5}
 
 ```bash
 sudo cp django-ec2-aws/deploy/django-ec2-aws.conf /etc/supervisor/conf.d/django-ec2-aws.conf
@@ -85,6 +102,8 @@ sudo supervisor ctl reread
 sudo supervisor ctl update
 sudo supervisorctl restart django-ec2-aws
 ```
+
+---
 
 ## Launch the application {#6}
 
