@@ -14,7 +14,7 @@ Simple web application made with Django. It has been deployed with
 
 ---
 
-### Modifications in the project
+### Modifications in the project {#1}
 
 For the proper functioning of the application, the following modifications have been made:
 - The `settings.py` file has been modified so that it allows all HOST.
@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['*']
 
 ---
 
-### EC2 virtual machine
+### EC2 virtual machine {#2}
 
 It runs with the **Ubuntu Server 22.04 LTS** OS image. Instance type: t2.micro.
 In network configuration the firewall rules are:
@@ -42,7 +42,7 @@ In network configuration the firewall rules are:
 
 ---
 
-### Installation of the application in the virtual machine
+### Installation of the application in the virtual machine {#3}
 
 Once the EC2 instance is launched. On the command line, enter the following commands:
 
@@ -84,7 +84,7 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 ---
 
-### Deployment server configuration
+### Deployment server configuration {#4}
 
 ```bash
 sudo cp django-ec2-aws/deploy/nginx.conf /etc/nginx/sites-available/django-ec2-aws
@@ -94,7 +94,7 @@ sudo service nginx restart
 
 ---
 
-### Supervisor configuration
+### Supervisor configuration {#5}
 
 ```bash
 sudo cp django-ec2-aws/deploy/django-ec2-aws.conf /etc/supervisor/conf.d/django-ec2-aws.conf
@@ -105,7 +105,7 @@ sudo supervisorctl restart django-ec2-aws
 
 ---
 
-## Launch the application
+## Launch the application {#6}
 
 ```bash
 python3 manage.py runserver 0:8000
